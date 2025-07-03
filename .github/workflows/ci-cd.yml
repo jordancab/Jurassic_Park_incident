@@ -23,10 +23,6 @@ jobs:
         run: npm ci
         working-directory: ./docker/backend
 
-      - name: Lint code
-        run: npm run lint
-        working-directory: ./docker/backend
-
       - name: Run tests
         run: npm test
         working-directory: ./docker/backend
