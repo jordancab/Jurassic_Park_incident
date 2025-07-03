@@ -1,5 +1,6 @@
 const request = require('supertest');
 const app = require('../src/app');
+const { Sequelize } = require('sequelize');
 const sequelize = new Sequelize('sqlite::memory:');
 // Avant tous les tests, synchronise la BDD (test)
 beforeAll(async () => {
