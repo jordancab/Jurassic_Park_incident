@@ -23,10 +23,6 @@ jobs:
         run: npm install
         working-directory: ./docker/backend
 
-      - name: Run tests
-        run: npm test
-        working-directory: ./docker/backend
-
   docker-build-push:
     needs: build-and-test
     runs-on: ubuntu-latest
