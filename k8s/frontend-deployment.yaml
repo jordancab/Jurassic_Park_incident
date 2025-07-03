@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: incident-frontend
+  labels:
+    app: incident-frontend
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: incident-frontend
+  template:
+    metadata:
+      labels:
+        app: incident-frontend
+    spec:
+      containers:
+        - name: nginx
+          image: jordanmeudje/incident-frontend:latest
+          ports:
+            - containerPort: 80
+          resources:
+            requests:
+              cpu: "100m"
+              memory: "128Mi"
+            limits:
+              cpu: "500m"
+              memory: "512Mi"
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 80
+            initialDelaySeconds: 5
+            periodSeconds: 10
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 80
+            initialDelaySeconds: 15
+            periodSeconds: 20

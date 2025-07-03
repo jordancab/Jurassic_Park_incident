@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: incident-backend
+  labels:
+    app: incident-backend
+spec:
+  type: ClusterIP
+  selector:
+    app: incident-backend
+  ports:
+    - port: 3000
+      targetPort: 3000
